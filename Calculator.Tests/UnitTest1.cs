@@ -1,12 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿
+using System;
+using NUnit.Framework;
 
 namespace CalculatorUnitTest
 {
-    [TestClass]
     public class CalculatorTests
     {
-        [TestMethod]
+        [Test]
         public void TestAdd()
         {
             var test = new Calculator.Calculator();
@@ -14,7 +14,7 @@ namespace CalculatorUnitTest
             Assert.AreEqual(7, result);
         }
 
-        [TestMethod]
+        [Test]
         public void TestSubtract()
         {
             var test = new Calculator.Calculator();
@@ -22,7 +22,7 @@ namespace CalculatorUnitTest
             Assert.AreEqual(1, result);
         }
 
-        [TestMethod]
+        [Test]
         public void TestMultiply()
         {
             var test = new Calculator.Calculator();
@@ -32,7 +32,7 @@ namespace CalculatorUnitTest
 
 
 
-        [TestMethod]
+        [Test]
         public void TestPower()
         {
             var test = new Calculator.Calculator();
@@ -40,12 +40,12 @@ namespace CalculatorUnitTest
             Assert.AreEqual(16, result);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(InvalidOperationException))]
+        [Test]
+        //[ExpectedException(typeof(InvalidOperationException))]
         public void TestSquareRoot()
         {
             var test = new Calculator.Calculator();
-            var result = test.squareroot(-4);
+            Assert.Throws<InvalidOperationException>(() => test.squareroot(-4));
 
         }
     }
