@@ -16,6 +16,19 @@ namespace CalculatorUnitTest
 			Assert.AreEqual(res, result);
 		}
 
+		[TestCase(5, 3, 8, 16)]
+		[TestCase(5, 2, 7, 14)]
+		[TestCase(1, 3, 4, 8)]
+		public void TestAddAccumulator(double a, double b, double c, double res)
+		{	
+			Calculator.Calculator test = new Calculator.Calculator(); 
+			test.Add(a, b);
+			var Result = test.Add(c);
+			Assert.AreEqual(res, Result);
+
+		}
+
+
 		[TestCase(4, 3,	1)]
 		[TestCase(4, 4, 0)]
 		[TestCase(4, 3, 1)]
@@ -24,6 +37,18 @@ namespace CalculatorUnitTest
 			var test = new Calculator.Calculator();
 			var result = test.Subract(a, b);
 			Assert.AreEqual(res, result);
+		}
+
+		[TestCase(5, 3, 4, 4)]
+		[TestCase(5, 2, 3, 4)]
+		[TestCase(1, 3, 2, 2)]
+		public void TestSubtractAccumulator(double a, double b, double c, double res)
+		{
+			Calculator.Calculator test = new Calculator.Calculator();
+			test.Add(a, b);
+			var Result = test.Subtract(c);
+			Assert.AreEqual(res, Result);
+
 		}
 
 		[Test]
