@@ -94,11 +94,19 @@ namespace Calculator
 			return Power(Accumulator, exp);
 		}
 
-		public double Squareroot(double a)
-		{
-			if (a < 0)
-				throw new InvalidOperationException();
-			return Math.Sqrt(a);
-		}
-	}
+        public double Squareroot(double a)
+        {
+            if (a < 0)
+                throw new InvalidOperationException();
+            Accumulator = Math.Sqrt(a)
+            return Accumulator;
+        }
+
+        public double Squareroot()
+        {
+            Accumulator = Math.Sqrt(Accumulator)
+            return Accumulator;
+        }
+
+    }
 }
