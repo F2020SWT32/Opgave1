@@ -28,6 +28,12 @@ namespace Calculator
 
 	public class Calculator
 	{
+		public double Accumulator { get; private set; }
+
+		public Calculator()
+		{
+			Accumulator = 0;
+		}
 		public double Add(double a, double b)
 		{
 			return a + b;
