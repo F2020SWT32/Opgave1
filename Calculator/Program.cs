@@ -60,7 +60,7 @@ namespace Calculator
             if(b == 0)
                 throw new DivideByZeroException();
             _accumulator = a / b;
-            return accumulator;
+            return _accumulator;
         }
 
         public double Divide(double divisor)
