@@ -72,7 +72,8 @@ namespace Calculator
 
 		public double Multiply(double multiplier)
 		{
-			return Accumulator * multiplier;
+			Accumulator = Accumulator * multiplier;
+			return Accumulator;
 		}
 
 		public double Divide(double a, double b)
@@ -88,7 +89,8 @@ namespace Calculator
 			if(divisor == 0)
 				throw new DivideByZeroException();
 
-			return Accumulator/divisor;
+			Accumulator = Accumulator/divisor;
+			return Accumulator;
 		}
 
 		public double Power(double x, double exp)
@@ -111,13 +113,13 @@ namespace Calculator
 		{
 			if (a < 0)
 				throw new InvalidOperationException();
-			Accumulator = Math.Sqrt(a)
+			Accumulator = Math.Sqrt(a);
 			return Accumulator;
 		}
 
 		public double Squareroot()
 		{
-			Accumulator = Math.Sqrt(Accumulator)
+			Accumulator = Math.Sqrt(Accumulator);
 			return Accumulator;
 		}
 
