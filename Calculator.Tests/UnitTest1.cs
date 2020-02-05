@@ -32,12 +32,64 @@ namespace CalculatorUnitTest
 			Assert.AreEqual(16, result);
 		}
 
-		[Test]
-		public void TestPower()
+		[TestCase(2,	8,	256)]
+		[TestCase(3,	3,	27)]
+		[TestCase(5,	4,	625)]
+		public void TestPower(double a, double exp, double res)
 		{
 			var test = new Calculator.Calculator();
-			var result = test.Power(2, 4);
-			Assert.AreEqual(16, result);
+			var result = test.Power(a, exp);
+			Assert.AreEqual(res, result);
+			Assert.AreEqual(res, test.Accumulator);
+		}
+
+		[TestCase(4,	4,	256)]
+		[TestCase(9,	3,	729)]
+		[TestCase(5,	3,	125)]
+		public void TestPowerOverload(double a, double exp, double res)
+		{
+			var test = new Calculator.Calculator();
+			test.Add(0, a);
+			var result = test.Power(exp);
+			Assert.AreEqual(res, result);
+			Assert.AreEqual(res, test.Accumulator);
+		}
+
+		[TestCase(-2)]
+		[TestCase(-0.001)]
+		[TestCase(-199)]
+		public void TestPowerExceptionBaseZeroExponentNegative(double a)
+		{
+			var test = new Calculator();
+			Assert.Trows<ArgumentException>(() => test.Power(0, a); );
+		}
+
+		[TestCase(-5)]
+		[TestCase(-0.0000001)]
+		[TestCase(-200.5)]
+		public void TestPowerOverloadExceptionBaseZeroExponentNegative(double a)
+		{
+			var test = new Calculator();
+			Assert.Trows<ArgumentException>(() => test.Power(a); );
+		}
+
+		[TestCase(-2,		0.5)]
+		[TestCase(-3,		2.5)]
+		[TestCase(-0.002,	234.6)]
+		public void TestPowerExceptionBaseNegativeExponentNonInteger(double a, double exp)
+		{
+			var test = new Calculator();
+			Assert.Trows<ArgumentException>(() => test.Power(a, exp); );
+		}
+
+		[TestCase(-4,		0.1)]
+		[TestCase(-128,		4.5)]
+		[TestCase(-0.02001,	2213.6)]
+		public void TestPowerOverloadExceptionBaseNegativeExponentNonInteger(double a, double exp)
+		{
+			var test = new Calculator();
+			test.Add(0, a);
+			Assert.Trows<ArgumentException>(() => test.Power(exp); );
 		}
 
 		[Test]
