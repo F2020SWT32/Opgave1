@@ -24,12 +24,27 @@ namespace CalculatorUnitTest
 			Assert.AreEqual(1, result);
 		}
 
-		[Test]
-		public void TestMultiply()
+		[TestCase(15, 8, 120)]
+		[TestCase(-7, 4, -28)]
+        [TestCase(-8, -3, 24)]
+		public void TestMultiply(double a, double b, double res)
 		{
 			var test = new Calculator.Calculator();
-			var result = test.Multiply(4, 4);
-			Assert.AreEqual(16, result);
+			var result = test.Multiply(a, b);
+			Assert.AreEqual(res, result);
+            Assert.AreEqual(res, test._accumulator);
+		}
+
+        [TestCase(7, 7, 49)]
+		[TestCase(8, -5, -40)]
+        [TestCase(-4, -4, 16)]
+		public void TestMultiplyOverload(double a, double multiplier, double res)
+		{
+			var test = new Calculator.Calculator();
+            test.Add(0, a);
+			var result = test.Multiply(multiplier);
+			Assert.AreEqual(res, result);
+            Assert.AreEqual(res, test._accumulator);
 		}
 
 		[Test]

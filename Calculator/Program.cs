@@ -47,7 +47,13 @@ namespace Calculator
 
         public double Multiply(double a, double b)
         {
-            return a * b;
+            _accumulator = a * b;
+            return _accumulator;
+        }
+
+        public double Multiply(double multiplier)
+        {
+            return _accumulator * multiplier;
         }
 
         public double Power(double x, double exp)
