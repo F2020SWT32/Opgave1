@@ -29,11 +29,11 @@ namespace Calculator
 
     public class Calculator
     {
-        public double _accumulator { get; private set; }
+        public double Accumulator { get; private set; }
 
         public Calculator()
         {
-            _accumulator = 0;
+            Accumulator = 0;
         }
         public double Add(double a, double b)
         {
@@ -47,13 +47,13 @@ namespace Calculator
 
         public double Multiply(double a, double b)
         {
-            _accumulator = a * b;
-            return _accumulator;
+            Accumulator = a * b;
+            return Accumulator;
         }
 
         public double Multiply(double multiplier)
         {
-            return _accumulator * multiplier;
+            return Accumulator * multiplier;
         }
 
         public double Power(double x, double exp)
@@ -65,8 +65,8 @@ namespace Calculator
         {
             if(b == 0)
                 throw new DivideByZeroException();
-            _accumulator = a / b;
-            return _accumulator;
+            Accumulator = a / b;
+            return Accumulator;
         }
 
         public double Divide(double divisor)
@@ -74,7 +74,7 @@ namespace Calculator
             if(divisor == 0)
                 throw new DivideByZeroException();
 
-            return _accumulator/divisor;
+            return Accumulator/divisor;
         }
 
         public double Squareroot(double a)

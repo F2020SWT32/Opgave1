@@ -32,7 +32,7 @@ namespace CalculatorUnitTest
 			var test = new Calculator.Calculator();
 			var result = test.Multiply(a, b);
 			Assert.AreEqual(res, result);
-            Assert.AreEqual(res, test._accumulator);
+            Assert.AreEqual(res, test.Accumulator);
 		}
 
         [TestCase(7, 7, 49)]
@@ -44,7 +44,7 @@ namespace CalculatorUnitTest
             test.Add(0, a);
 			var result = test.Multiply(multiplier);
 			Assert.AreEqual(res, result);
-            Assert.AreEqual(res, test._accumulator);
+            Assert.AreEqual(res, test.Accumulator);
 		}
 
 		[Test]
@@ -62,7 +62,7 @@ namespace CalculatorUnitTest
             var test = new Calculator.Calculator();
             var result = test.Divide(a, b);
             Assert.AreEqual(res, result);
-            Assert.AreEqual(res, test._accumulator);
+            Assert.AreEqual(res, test.Accumulator);
 
         }
 
@@ -81,7 +81,7 @@ namespace CalculatorUnitTest
             test.Add(0, 21);
             var result = test.Divide(divisor);
             Assert.AreEqual(res, result);
-            Assert.AreEqual(res, test._accumulator);
+            Assert.AreEqual(res, test.Accumulator);
         }
 
         [Test]
