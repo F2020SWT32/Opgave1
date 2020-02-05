@@ -2,6 +2,7 @@
 
 namespace Calculator
 {
+<<<<<<< HEAD
 
     class Program
     {
@@ -77,14 +78,27 @@ namespace Calculator
             return Accumulator/divisor;
         }
 
-        public double Squareroot(double a)
-        {
-            if (a < 0)
-                throw new InvalidOperationException();
-            return Math.Sqrt(a);
-        }
-    }
+		public double Power(double x, double exp)
+		{
+			if(x == 0 && exp < 0)
+				throw new ArgumentException("Exponent cant be negative if the base is 0");
+			if(x < 0 && exp % 1.0 != 0)
+				throw new ArgumentException("Exponent must be an integer if the base is negative");
+			
+			Accumulator = Math.Pow(x, exp);
+			return Accumulator;
+		}
+		
+		public double Power(double exp)
+		{
+			return Power(Accumulator, exp);
+		}
 
-
-
+		public double Squareroot(double a)
+		{
+			if (a < 0)
+				throw new InvalidOperationException();
+			return Math.Sqrt(a);
+		}
+	}
 }
