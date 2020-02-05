@@ -75,8 +75,16 @@ namespace Calculator
         {
             if (a < 0)
                 throw new InvalidOperationException();
-            return Math.Sqrt(a);
+            _accumulator = Math.Sqrt(a)
+            return _accumulator;
         }
+
+        public double Squareroot()
+        {
+            _accumulator = Math.Sqrt(_accumulator)
+            return _accumulator;
+        }
+
     }
 
 

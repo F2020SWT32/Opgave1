@@ -78,8 +78,22 @@ namespace CalculatorUnitTest
 
         
 
-		[Test]
-		public void TestSquareRoot()
+		[TestCase(0,0)]
+		[TestCase(0.01,0.1)]
+		[TestCase(10, 3.16227766017)]
+		public void TestSquareRoot(double a, double expected)
+		{
+			var test = new Calculator.Calculator();
+			var result = test.Squareroot(a);
+			Assert.AreEqual(result, expected, 0.00001);
+
+		}
+
+		[TestCase(0)]
+		[TestCase(0.01)]
+		[TestCase(10)]
+
+		public void TestSquareRootEx()
 		{
 			var test = new Calculator.Calculator();
 			Assert.Throws<InvalidOperationException>(() => test.Squareroot(-4));
