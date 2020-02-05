@@ -34,6 +34,11 @@ namespace Calculator
 		{
 			Accumulator = 0;
 		}
+
+		public void clear()
+		{
+			Accumulator = 0;
+		}
 		public double Add(double a, double b)
 		{
 			return a + b;
