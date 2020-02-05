@@ -40,11 +40,49 @@ namespace CalculatorUnitTest
 			Assert.AreEqual(16, result);
 		}
 
+        [TestCase(16, 4, 4)]
+		[TestCase(-32, 8, -4)]
+        public void TestDivide(double a, double b, double res)
+        {
+            var test = new Calculator.Calculator();
+            var result = test.Divide(a, b);
+            Assert.AreEqual(res, result);
+            Assert.AreEqual(res, test._accumulator);
+
+        }
+
+        [Test]
+        public void TestDivideByZero()
+        {
+            var test = new Calculator.Calculator();
+            Assert.Throws<DivideByZeroException>(() => test.Divide(8, 0));
+        }
+
+        [TestCase(3, 7)]
+		[TestCase(-7, -3)]
+        public void TestDivideOverload(double divisor, double res)
+        {
+            var test = new Calculator.Calculator();
+            test.Add(0, 21);
+            var result = test.Divide(divisor);
+            Assert.AreEqual(res, result);
+            Assert.AreEqual(res, test._accumulator);
+        }
+
+        [Test]
+        public void TestDivideByZeroOverload()
+        {
+            var test = new Calculator.Calculator();
+            Assert.Throws<DivideByZeroException>(() => test.Divide(0));
+        }
+
+        
+
 		[Test]
 		public void TestSquareRoot()
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<InvalidOperationException>(() => test.squareroot(-4));
+			Assert.Throws<InvalidOperationException>(() => test.Squareroot(-4));
 
 		}
 	}
