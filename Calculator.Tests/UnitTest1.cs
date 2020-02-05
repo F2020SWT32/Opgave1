@@ -6,22 +6,24 @@ namespace CalculatorUnitTest
 {
 	public class CalculatorTests
 	{
-		[TestCase(5,		3,		8, 1.0/1000000)]
-		[TestCase(2.5,		2.5,	5, 1.0/1000000)]
-		[TestCase(1.0/3,	2.0/3,	1, 1.0/1000000)]
-		public void TestAdd(double a, double b, double res, double theta)
+		[TestCase(5,		3,		8)]
+		[TestCase(2.5,		2.5,	5)]
+		[TestCase(1.0/3,	2.0/3,	1)]
+		public void TestAdd(double a, double b, double res)
 		{
 			var test = new Calculator.Calculator();
 			var result = test.Add(a, b);
-			Assert.AreEqual(res, result, theta);
+			Assert.AreEqual(res, result);
 		}
 
-		[Test]
-		public void TestSubtract()
+		[TestCase(4, 3,	1)]
+		[TestCase(4, 4, 0)]
+		[TestCase(4, 3, 1)]
+		public void TestSubtract(double a, double b, double res)
 		{
 			var test = new Calculator.Calculator();
-			var result = test.Subract(4, 3);
-			Assert.AreEqual(1, result);
+			var result = test.Subract(a, b);
+			Assert.AreEqual(res, result);
 		}
 
 		[Test]
@@ -44,7 +46,7 @@ namespace CalculatorUnitTest
 		public void TestSquareRoot()
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<InvalidOperationException>(() => test.squareroot(-4));
+			Assert.Throws<InvalidOperationException>(() => test.Squareroot(-4));
 
 		}
 	}

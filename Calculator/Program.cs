@@ -41,36 +41,54 @@ namespace Calculator
 		}
 		public double Add(double a, double b)
 		{
-			return a + b;
+			Accumulator = a + b;
+			return Accumulator;
+		}
+
+		public double Add(double a)
+		{
+			Accumulator = Add(Accumulator, a);
+			return Accumulator;
 		}
 
 		public double Subract(double a, double b)
 		{
-			return a - b;
+			Accumulator = a - b;
+			return Accumulator;
+		}
+
+		public double Subtract(double a)
+		{
+			Accumulator = Subract(Accumulator, a);
+			return Accumulator;
 		}
 
 		public double Multiply(double a, double b)
 		{
-			return a * b;
+			Accumulator = a * b;
+			return Accumulator;
 		}
 
 		public double Power(double x, double exp)
 		{
-			return Math.Pow(x, exp);
+			Accumulator = Math.Pow(x, exp);
+			return Accumulator;
 		}
 
 		public double Divide(double a, double b)
 		{
 			if(b == 0)
 				throw new DivideByZeroException();
-			return a / b;
+			Accumulator = a / b;
+			return Accumulator;
 		}
 
 		public double Squareroot(double a)
 		{
 			if (a < 0)
 				throw new InvalidOperationException();
-			return Math.Sqrt(a);
+			Accumulator = Math.Sqrt(a);
+			return Accumulator;
 		}
 	}
 
