@@ -45,7 +45,7 @@ namespace CalculatorUnitTest
         public void TestSquareRoot()
         {
             var test = new Calculator.Calculator();
-            Assert.Throws<InvalidOperationException>(() => test.squareroot(-4));
+            Assert.Throws<InvalidOperationException>(() => test.Squareroot(-4));
 
         }
     }
