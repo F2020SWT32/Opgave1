@@ -183,14 +183,14 @@ namespace CalculatorUnitTest
 
 		}
 
-/*		[TestCase(0)]
+		[TestCase(0)]
 		[TestCase(0.01)]
-		[TestCase(10)]*/
-		[Test]
-		public void TestSquareRootEx()
+		[TestCase(10)]
+		
+		public void TestSquareRootEx(double a)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<InvalidOperationException>(() => test.Squareroot(-4));
+			Assert.Throws<InvalidOperationException>(() => test.Squareroot(a));
 
 		}
 	}
