@@ -25,7 +25,7 @@ namespace CalculatorUnitTest
 			test.Add(a, b);
 			var Result = test.Add(c);
 			Assert.AreEqual(res, Result);
-
+			Assert.AreEqual(res, test.Accumulator);
 		}
 
 
@@ -37,6 +37,7 @@ namespace CalculatorUnitTest
 			var test = new Calculator.Calculator();
 			var result = test.Subract(a, b);
 			Assert.AreEqual(res, result);
+			Assert.AreEqual(res, test.Accumulator);
 		}
 
 		[TestCase(5, 3, 4, 4)]
@@ -48,7 +49,7 @@ namespace CalculatorUnitTest
 			test.Add(a, b);
 			var Result = test.Subtract(c);
 			Assert.AreEqual(res, Result);
-
+			Assert.AreEqual(res, test.Accumulator);
 		}
 
 		[TestCase(15, 8, 120)]
@@ -180,7 +181,7 @@ namespace CalculatorUnitTest
 			var test = new Calculator.Calculator();
 			var result = test.Squareroot(a);
 			Assert.AreEqual(result, expected, 0.00001);
-
+			Assert.AreEqual(test.Accumulator, expected, 0.00001);
 		}
 
 
@@ -189,6 +190,31 @@ namespace CalculatorUnitTest
 		{
 			var test = new Calculator.Calculator();
 			Assert.Throws<InvalidOperationException>(() => test.Squareroot(-4));
+
+		}
+
+
+		[TestCase(0,0)]
+		[TestCase(0.01,0.1)]
+		[TestCase(10, 3.16227766017)]
+		public void TestSquareRootOverload(double a, double expected)
+		{
+			var test = new Calculator.Calculator();
+			test.Add(0, a);
+			
+			var result = test.Squareroot();
+			Assert.AreEqual(result, expected, 0.00001);
+			Assert.AreEqual(test.Accumulator, expected, 0.00001);
+		}
+
+
+		[Test]
+		public void TestSquareRootOverloadEx()
+		{
+			var test = new Calculator.Calculator();
+			test.Add(0, -4);
+			
+			Assert.Throws<InvalidOperationException>(() => test.Squareroot());
 
 		}
 	}
