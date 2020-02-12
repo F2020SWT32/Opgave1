@@ -103,7 +103,7 @@ namespace CalculatorUnitTest
 		public void TestPowerExceptionBaseZeroExponentNegative(double a)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<ArgumentException>(() => test.Power(0, a) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(0, a) );
 		}
 
 		[TestCase(-5)]
@@ -112,7 +112,7 @@ namespace CalculatorUnitTest
 		public void TestPowerOverloadExceptionBaseZeroExponentNegative(double a)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<ArgumentException>(() => test.Power(a) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(a) );
 		}
 
 		[TestCase(-2,		0.5)]
@@ -121,7 +121,7 @@ namespace CalculatorUnitTest
 		public void TestPowerExceptionBaseNegativeExponentNonInteger(double a, double exp)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<ArgumentException>(() => test.Power(a, exp) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(a, exp) );
 		}
 
 		[TestCase(-4,		0.1)]
@@ -131,7 +131,7 @@ namespace CalculatorUnitTest
 		{
 			var test = new Calculator.Calculator();
 			test.Add(0, a);
-			Assert.Throws<ArgumentException>(() => test.Power(exp) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(exp) );
 		}
 
 		[TestCase(16, 4, 4)]
