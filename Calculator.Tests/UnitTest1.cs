@@ -6,9 +6,9 @@ namespace CalculatorUnitTest
 {
 	public class CalculatorTests
 	{
-		[TestCase(5,		3,		8)]
-		[TestCase(2.5,		2.5,	5)]
-		[TestCase(1.0/3,	2.0/3,	1)]
+		[TestCase(5, 3, 8)]
+		[TestCase(2.5, 2.5, 5)]
+		[TestCase(1.0 / 3, 2.0 / 3, 1)]
 		public void TestAdd(double a, double b, double res)
 		{
 			var test = new Calculator.Calculator();
@@ -20,8 +20,8 @@ namespace CalculatorUnitTest
 		[TestCase(5, 2, 7, 14)]
 		[TestCase(1, 3, 4, 8)]
 		public void TestAddAccumulator(double a, double b, double c, double res)
-		{	
-			Calculator.Calculator test = new Calculator.Calculator(); 
+		{
+			Calculator.Calculator test = new Calculator.Calculator();
 			test.Add(a, b);
 			var Result = test.Add(c);
 			Assert.AreEqual(res, Result);
@@ -29,7 +29,7 @@ namespace CalculatorUnitTest
 		}
 
 
-		[TestCase(4, 3,	1)]
+		[TestCase(4, 3, 1)]
 		[TestCase(4, 4, 0)]
 		[TestCase(4, 3, 1)]
 		public void TestSubtract(double a, double b, double res)
@@ -75,9 +75,9 @@ namespace CalculatorUnitTest
 			Assert.AreEqual(res, test.Accumulator);
 		}
 
-		[TestCase(2,	8,	256)]
-		[TestCase(3,	3,	27)]
-		[TestCase(5,	4,	625)]
+		[TestCase(2, 8, 256)]
+		[TestCase(3, 3, 27)]
+		[TestCase(5, 4, 625)]
 		public void TestPower(double a, double exp, double res)
 		{
 			var test = new Calculator.Calculator();
@@ -86,9 +86,9 @@ namespace CalculatorUnitTest
 			Assert.AreEqual(res, test.Accumulator);
 		}
 
-		[TestCase(4,	4,	256)]
-		[TestCase(9,	3,	729)]
-		[TestCase(5,	3,	125)]
+		[TestCase(4, 4, 256)]
+		[TestCase(9, 3, 729)]
+		[TestCase(5, 3, 125)]
 		public void TestPowerOverload(double a, double exp, double res)
 		{
 			var test = new Calculator.Calculator();
@@ -104,7 +104,7 @@ namespace CalculatorUnitTest
 		public void TestPowerExceptionBaseZeroExponentNegative(double a)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<InvalidOperationException>(() => test.Power(0, a) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(0, a));
 		}
 
 		[TestCase(-5)]
@@ -113,26 +113,26 @@ namespace CalculatorUnitTest
 		public void TestPowerOverloadExceptionBaseZeroExponentNegative(double a)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<InvalidOperationException>(() => test.Power(a) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(a));
 		}
 
-		[TestCase(-2,		0.5)]
-		[TestCase(-3,		2.5)]
-		[TestCase(-0.002,	234.6)]
+		[TestCase(-2, 0.5)]
+		[TestCase(-3, 2.5)]
+		[TestCase(-0.002, 234.6)]
 		public void TestPowerExceptionBaseNegativeExponentNonInteger(double a, double exp)
 		{
 			var test = new Calculator.Calculator();
-			Assert.Throws<InvalidOperationException>(() => test.Power(a, exp) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(a, exp));
 		}
 
-		[TestCase(-4,		0.1)]
-		[TestCase(-128,		4.5)]
-		[TestCase(-0.02001,	2213.6)]
+		[TestCase(-4, 0.1)]
+		[TestCase(-128, 4.5)]
+		[TestCase(-0.02001, 2213.6)]
 		public void TestPowerOverloadExceptionBaseNegativeExponentNonInteger(double a, double exp)
 		{
 			var test = new Calculator.Calculator();
 			test.Add(0, a);
-			Assert.Throws<InvalidOperationException>(() => test.Power(exp) );
+			Assert.Throws<InvalidOperationException>(() => test.Power(exp));
 		}
 
 		[TestCase(16, 4, 4)]
@@ -171,10 +171,10 @@ namespace CalculatorUnitTest
 			Assert.Throws<DivideByZeroException>(() => test.Divide(0));
 		}
 
-		
 
-		[TestCase(0,0)]
-		[TestCase(0.01,0.1)]
+
+		[TestCase(0, 0)]
+		[TestCase(0.01, 0.1)]
 		[TestCase(10, 3.16227766017)]
 		public void TestSquareRoot(double a, double expected)
 		{
@@ -194,27 +194,16 @@ namespace CalculatorUnitTest
 		}
 
 
-		[TestCase(0,0)]
-		[TestCase(0.01,0.1)]
-		[TestCase(10, 3.16227766017)]
-		public void TestSquareRootOverload(double a, double expected)
-		{
-			var test = new Calculator.Calculator();
-			test.Add(0, a);
-			
-			var result = test.Squareroot();
-			Assert.AreEqual(result, expected, 0.00001);
-			Assert.AreEqual(test.Accumulator, expected, 0.00001);
-		}
-
+		
 
 		[Test]
-		public void TestSquareRootOverloadEx()
+		public void TestAccumulatorClear()
 		{
 			var test = new Calculator.Calculator();
-			test.Add(0, -4);
-			
-			Assert.Throws<InvalidOperationException>(() => test.Squareroot());
+			test.Add(0, 21);
+			Assert.AreEqual(test.Accumulator, 21);
+			test.Clear();
+			Assert.AreEqual(test.Accumulator, 0);
 
 		}
 	}

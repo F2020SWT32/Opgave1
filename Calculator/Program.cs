@@ -117,11 +117,6 @@ namespace Calculator
 			return Accumulator;
 		}
 
-		public double Squareroot()
-		{
-			Accumulator = Math.Sqrt(Accumulator);
-			return Accumulator;
-		}
-
+	
 	}
 }
